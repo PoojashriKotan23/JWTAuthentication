@@ -16,9 +16,6 @@ namespace JWT_TokenBased_Authentication.Controllers
         private IConfiguration _config;
         public LoginController(IConfiguration config)
         {
-
-
-
             _config = config;
         }
         private Users AuthenticateUser(Users user)
@@ -33,7 +30,7 @@ namespace JWT_TokenBased_Authentication.Controllers
         private string GenerateToken(Users user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var cred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); //HmacSha512
+            var cred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); 
 
 
 

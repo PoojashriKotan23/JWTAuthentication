@@ -13,9 +13,9 @@ namespace JWT_TokenBased_Authentication.Controllers
         [Authorize]
         [HttpGet]
         [Route("GetData")]
-        public string GetData()
+        public List<Employee> GetData()
         {
-            return "Authenticated with JWT";
+                return Employee.GetEmployee();
         }
 
 
