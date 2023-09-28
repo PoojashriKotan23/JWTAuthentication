@@ -35,7 +35,7 @@ namespace JWT_TokenBased_Authentication.Controllers
 
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Audience"], null,
-                expires: DateTime.Now.AddMinutes(1), signingCredentials: cred);
+                expires: DateTime.Now.AddMinutes(10), signingCredentials: cred);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
         [AllowAnonymous]

@@ -1,16 +1,22 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Serilog;
+using System.Collections.Generic;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Log.Logger = new LoggerConfiguration()
+//    .MinimumLevel.Information()
+//    .WriteTo.Console()
+//    .WriteTo.File("Logs/LoggData.txt",rollingInterval:RollingInterval.Day)
+//    .CreateLogger();
+    
 
 
 // Add services to the container.
-
-
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -33,6 +39,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Serilog Configuration
+builder.Host.UseSerilog( (hostingContext, loggerConfig) =>
+{
+    loggerConfig.ReadFrom.Configuration(hostingContext.Configuration);
+});
+
 
 
 var app = builder.Build();
@@ -46,7 +58,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseSerilogRequestLogging();
 
 app.UseAuthentication();
 
