@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using TokenAuth.Models;
+using Serilog;
 
 namespace JWT_TokenBased_Authentication.Controllers
 {
@@ -30,8 +31,7 @@ namespace JWT_TokenBased_Authentication.Controllers
         private string GenerateToken(Users user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-            var cred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); 
-
+            var cred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Audience"], null,
@@ -49,7 +49,9 @@ namespace JWT_TokenBased_Authentication.Controllers
                 var token = GenerateToken(user_);
                 response = Ok(new { token = token });
             }
+            Log.Information("Login Succesfull",response);
             return response;
+           
         }
     }
 }

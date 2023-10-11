@@ -3,8 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Serilog;
 using System.Collections.Generic;
-
-
+using TokenAuth.IMethodImplement;
+using TokenAuth.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,12 +32,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IEmployee, EmployeeMethod>();
 
 //Serilog Configuration
 builder.Host.UseSerilog( (hostingContext, loggerConfig) =>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using TokenAuth.Interface;
 using TokenAuth.Models;
 
 namespace JWT_TokenBased_Authentication.Controllers
@@ -11,15 +12,28 @@ namespace JWT_TokenBased_Authentication.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        private readonly IEmployee _IEmployee;
+        public EmployeeController(IEmployee emp)
+        {
+            _IEmployee = emp;
+        }
+
+        //public EmployeeController()
+        //{
+
+        //}
+
         [Authorize]
         [HttpGet]
         [Route("GetData")]
-        public List<Employee> GetData()
+        public IList<Employee> GetData()
         {
-            var result= Employee.GetEmployee();
+           // private _IEmployee =new IEmployee(); 
+            var result = _IEmployee.getEmployee();
             Log.Information("Get Employee Details =>{@Result}", result);
             return result;
         }
+
         [HttpGet]
         [Route("Details")]
         public string Details()
@@ -27,13 +41,14 @@ namespace JWT_TokenBased_Authentication.Controllers
             string data = null;
             try
             {
-                data= "Authenticated with JWT details";
+                data = "Authenticated with JWT details";
             }
-            catch {
+            catch
+            {
                 Log.Error("Error in authentication");
             }
             return data;
-         
+
         }
 
         [Authorize]
@@ -45,20 +60,22 @@ namespace JWT_TokenBased_Authentication.Controllers
             return "User added with Username " + user.Username;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("CheckError")]
-        public void division()
+        public int division()
         {
+            int result = 0;
             try
             {
                 int n = 10;
-                int result = n / 0;
+                result = n / 0;
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "An Error Occured");
             }
+            return result;
         }
-       
+
     }
 }
