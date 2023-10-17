@@ -22,9 +22,9 @@ namespace JWT_TokenBased_Authentication.Controllers
         private Users AuthenticateUser(Users user)
         {
             Users _user = null;
-            if (user.Username == "admin" && user.Password == "password")
+            if (user.username == "admin" && user.password == "password")
             {
-                _user = new Users { Username = "Poojashri" };
+                _user = new Users { username = "Poojashri" };
             }
             return _user;
         }

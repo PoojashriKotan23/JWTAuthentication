@@ -64,11 +64,12 @@ namespace JWT_TokenBased_Authentication.Controllers
 
         [Authorize]
         [HttpPost]
+        [HttpGet]
         [Route("AddUser")]
         public string AddUser(Users user)
         {
-            Log.Information("User added with Username " + user.Username);
-            return "User added with Username " + user.Username;
+            Log.Information("User added with Username " + user.username);
+            return "User added with Username " + user.username;
         }
 
         [HttpGet]
