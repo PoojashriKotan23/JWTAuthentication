@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenAuth", "TokenAuth.csproj", "{14E6038E-70B5-4129-A727-77F6BF1CF0CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestController", "..\TestController\TestController.csproj", "{7B90F55F-906D-41BF-BE25-062D2BF62397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestController", "..\TestController\TestController.csproj", "{7B90F55F-906D-41BF-BE25-062D2BF62397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIClientLibrary", "..\APIClientLibrary\APIClientLibrary.csproj", "{D6C5CE49-D5B2-4B47-A84D-42FADD34AD8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumerClient", "..\ConsumerClient\ConsumerClient.csproj", "{6FA80348-0B2A-44DF-AB87-0A240CACBE82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{7B90F55F-906D-41BF-BE25-062D2BF62397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B90F55F-906D-41BF-BE25-062D2BF62397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B90F55F-906D-41BF-BE25-062D2BF62397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C5CE49-D5B2-4B47-A84D-42FADD34AD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C5CE49-D5B2-4B47-A84D-42FADD34AD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C5CE49-D5B2-4B47-A84D-42FADD34AD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C5CE49-D5B2-4B47-A84D-42FADD34AD8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA80348-0B2A-44DF-AB87-0A240CACBE82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA80348-0B2A-44DF-AB87-0A240CACBE82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA80348-0B2A-44DF-AB87-0A240CACBE82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA80348-0B2A-44DF-AB87-0A240CACBE82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

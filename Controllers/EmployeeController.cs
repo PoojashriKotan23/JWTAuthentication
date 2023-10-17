@@ -40,6 +40,7 @@ namespace JWT_TokenBased_Authentication.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
+        [Route("Login")]
         public IActionResult Login(Users user)
         {
             IActionResult response = Unauthorized();
@@ -50,7 +51,7 @@ namespace JWT_TokenBased_Authentication.Controllers
                 response = Ok(new { token = token });
             }
             Log.Information("Login Succesfull",response);
-            return response;
+             return response;
            
         }
     }

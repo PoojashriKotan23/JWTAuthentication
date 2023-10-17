@@ -17,22 +17,33 @@ namespace JWT_TokenBased_Authentication.Controllers
         {
             _IEmployee = emp;
         }
-
-        //public EmployeeController()
-        //{
-
-        //}
-
         [Authorize]
         [HttpGet]
         [Route("GetData")]
         public IList<Employee> GetData()
         {
-           // private _IEmployee =new IEmployee(); 
             var result = _IEmployee.getEmployee();
             Log.Information("Get Employee Details =>{@Result}", result);
             return result;
         }
+
+        [Authorize]
+        [HttpGet]
+        [Route("GetData/id")]
+        public Employee GetEmployee(int id)
+        {
+            //Employee employee = new Employee();
+            //try
+            //{
+               var result = _IEmployee.getEmployee().Find(x => x.ID == id);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //}
+            return result;
+        }
+
 
         [HttpGet]
         [Route("Details")]
